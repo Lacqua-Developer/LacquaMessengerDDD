@@ -50,3 +50,28 @@ login: Admin </br>
 senha: 102030</br>
 
 ![Tela Swagger](./images/API_REST.png)
+
+Retorno: 
+{
+  "nomeUsuario": "Administrador",
+  "id_Externo": null,
+  "permissao": 2,
+  "senha": "",
+  "email": null,
+  "login": "Admin",
+  "status": null,
+  "celular": null,
+  "confirmacao": null,
+  "idConfig": null,
+  "logado": true,
+ <strong> "tokenLogin": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiIxIiwidW5pcXVlX25hbWUiOiJBZG1pbmlzdHJhZG9yIiwiZ3JvdXBzaWQiOiIwIiwicm9sZSI6IjIiLCJwcmltYXJ5c2lkIjoiMSIsIm5iZiI6MTcxMDI1NzE3MywiZXhwIjoxNzEwMjY0MzczLCJpYXQiOjE3MTAyNTcxNzN9.Mmx1k7OzD8CvbftRQMnhz6ieac9jqLwPwIZVXSwB2GU" </strong>,
+  "id": 1,
+  "nome": "ADMIN",
+  "dtInclusao": null,
+  "dtAlteracao": "2024-03-12T12:26:13.77192-03:00"
+}
+
+Copie a chave tokenLogin e cole no campo value iniciando o a palavra "Bearer" antes da chave, assim voce terá acesso aos outros métodos  da API.
+
+![Autorize](./images/Autorize.png)
+
