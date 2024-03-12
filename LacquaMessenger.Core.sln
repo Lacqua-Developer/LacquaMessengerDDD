@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LacquaMessenger.Core", "Core\LacquaMessenger.Core.csproj", "{6C9F4DE6-98A0-4C5B-9E5B-295CDC9276F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LacquaMessenger.Domain", "Domain\LacquaMessenger.Domain.csproj", "{1E5D1879-3C17-4DD9-A7B5-48FF7E70A41F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LacquaMessenger.Infra", "LacquaMessenger.Infra\LacquaMessenger.Infra.csproj", "{997AF82F-23DC-43D5-B8B4-4586DA3BE1C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LacquaMessenger.App", "LacquaMessenger.App\LacquaMessenger.App.csproj", "{91196282-53F3-46DC-9286-71A0ED95570C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{0816CCD4-76C6-4511-A397-065DAAA6020E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LacquaMessenger.App.Test", "LacquaMessenger.App.Test\LacquaMessenger.App.Test.csproj", "{26F11264-A9C5-4397-872C-F44335FDA06E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LacquaMessenger.Api", "LacquaMessenger.Api\LacquaMessenger.Api.csproj", "{7447B54C-8526-45E0-9E99-6CB5796B14C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C9F4DE6-98A0-4C5B-9E5B-295CDC9276F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9F4DE6-98A0-4C5B-9E5B-295CDC9276F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9F4DE6-98A0-4C5B-9E5B-295CDC9276F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9F4DE6-98A0-4C5B-9E5B-295CDC9276F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E5D1879-3C17-4DD9-A7B5-48FF7E70A41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E5D1879-3C17-4DD9-A7B5-48FF7E70A41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E5D1879-3C17-4DD9-A7B5-48FF7E70A41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E5D1879-3C17-4DD9-A7B5-48FF7E70A41F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{997AF82F-23DC-43D5-B8B4-4586DA3BE1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997AF82F-23DC-43D5-B8B4-4586DA3BE1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997AF82F-23DC-43D5-B8B4-4586DA3BE1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997AF82F-23DC-43D5-B8B4-4586DA3BE1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91196282-53F3-46DC-9286-71A0ED95570C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91196282-53F3-46DC-9286-71A0ED95570C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91196282-53F3-46DC-9286-71A0ED95570C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91196282-53F3-46DC-9286-71A0ED95570C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F11264-A9C5-4397-872C-F44335FDA06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F11264-A9C5-4397-872C-F44335FDA06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F11264-A9C5-4397-872C-F44335FDA06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F11264-A9C5-4397-872C-F44335FDA06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7447B54C-8526-45E0-9E99-6CB5796B14C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7447B54C-8526-45E0-9E99-6CB5796B14C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7447B54C-8526-45E0-9E99-6CB5796B14C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7447B54C-8526-45E0-9E99-6CB5796B14C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26F11264-A9C5-4397-872C-F44335FDA06E} = {0816CCD4-76C6-4511-A397-065DAAA6020E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC7CF643-790C-449B-BD03-D3B38BEA4110}
+	EndGlobalSection
+EndGlobal
