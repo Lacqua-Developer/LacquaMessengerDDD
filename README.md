@@ -49,4 +49,4 @@ Quando o projeto é iniciado, por padrão, é criado o usuário "Admin" e para a
 login: Admin
 senha: 102030
 
-![Tela Swagger]("./images/API_REST.png")
+![Tela Swagger](./images/API_REST.png)
