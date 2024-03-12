@@ -46,7 +46,7 @@ Esse é um projeto inicial para um Bot de mensagem, onde o principal objetivo é
 
 Quando o projeto é iniciado, por padrão, é criado o usuário "Admin" e para acessar a api é necessário informar o token retornado do login;
 
-login: Admin
-senha: 102030
+login: Admin </br>
+senha: 102030</br>
 
 ![Tela Swagger](./images/API_REST.png)
