@@ -13,10 +13,10 @@ namespace LacquaMessenger.Domain.UseCases
         void AddAll(IEnumerable<TEntity> obj);
         void DeleteAll(IEnumerable<TEntity> obj);
         void Delete(TEntity obj);
-        void Delete(int id);
+        //void Delete(int id);
 
         IQueryable<TEntity> GetFull(int id, string[] parameters);
-        TEntity Get(int id);
+        //TEntity Get(int id);
 
         TEntity First();
         IQueryable<TEntity> Get();

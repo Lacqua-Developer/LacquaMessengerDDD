@@ -1,14 +1,15 @@
-﻿using LacquaMessenger.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class Usuario : Base
+    public partial class Usuario : LacquaMessenger.Core.Entities.Base
     {
-        public Usuario()
-        { }
-
+        [Key]
+        public int IdUsr { get; set; }
         public string? NomeUsuario { get; set; }
-        public string? Id_Externo { get; set; }
+        public string? IdExterno { get; set; }
         public int? Permissao { get; set; }
         public string? Senha { get; set; }
         public string? Email { get; set; }
@@ -16,10 +17,8 @@ namespace LacquaMessenger.Domain.Entities
         public bool? Status { get; set; }
         public string? Celular { get; set; }
         public string? Confirmacao { get; set; }
-        public int? IdConfig { get; set; }
+        public int? ConfigIdConfig { get; set; }
         public bool? Logado { get; set; }
         public string? TokenLogin { get; set; }
-
-
     }
 }

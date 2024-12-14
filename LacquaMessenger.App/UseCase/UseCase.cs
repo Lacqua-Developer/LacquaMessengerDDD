@@ -49,10 +49,10 @@ namespace LacquaMessenger.App
             _repository.Delete(obj);
         }
 
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
-        }
+        //public void Delete(int id)
+        //{
+        //    _repository.Delete(id);
+        //}
 
         public void DeleteAll(IEnumerable<T> obj)
         {
@@ -64,10 +64,10 @@ namespace LacquaMessenger.App
             return _repository.First();
         }
 
-        public T Get(int id)
-        {
-            return _repository.Get(id);
-        }
+        //public T Get(int id)
+        //{
+        //    return _repository.Get(id);
+        //}
 
         public IQueryable<T> Get()
         {

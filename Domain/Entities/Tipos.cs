@@ -1,19 +1,18 @@
-﻿using LacquaMessenger.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class Tipos : Base
+    public class Tipos
     {
-        public Tipos() { }
-
-        public TiposReferencia Referencia { get; set; }
-        public string Valor { get; set; }
-        public string Descricao { get; set; }
-    }
-
-    public enum TiposReferencia
-    {
-        TipoMensagem,
-        TipoFluxo
+        [Key]
+        public int IdTipo { get; set; }
+        public string? Referencia { get; set; }
+        public string? Valor { get; set; }
+        public string? Descricao { get; set; }
     }
 }

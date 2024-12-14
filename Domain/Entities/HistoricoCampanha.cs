@@ -1,20 +1,18 @@
-﻿using LacquaMessenger.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class HistoricoCampanha : Base
+    public partial class HistoricoCampanha
     {
-        public HistoricoCampanha() { }
-
-        public int CampanhaId { get; set; }
-        public int ContatoId { get; set; }
-        public int ConversaId { get; set; }
-        public int ListaId { get; set; }
-        public int SessaoId { get; set; }
-
-        public Contato Contato { get; set; }
-        public Campanha Campanha { get; set;}
-        public Conversa Conversa { get; set; }
-
+        [Key]
+        public int IdHistoricoCampanha { get; set; }
+        public int? CampanhaIdCampanha { get; set; }
+        public int? ContatoIdContato { get; set; }
+        public int? ConversaIdConversa { get; set; }
+        public int? ListaIdLista { get; set; }
+        public int? SessaoIdSessao { get; set; }
+        public int? IdEnvioLista { get; set; }
     }
 }

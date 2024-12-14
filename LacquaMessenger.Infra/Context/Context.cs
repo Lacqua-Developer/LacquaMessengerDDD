@@ -23,6 +23,7 @@ namespace LacquaMessenger.Infra
         protected readonly IConfiguration Configuration;
 
         private readonly DbConnection _dbConnection;
+
         public Context() 
         {
             Database.EnsureCreated();
@@ -57,11 +58,6 @@ namespace LacquaMessenger.Infra
 
                     break;
             }
-
-            
-            
-            // connect to postgres with connection string from app settings
-            //options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
         }
 
 
@@ -69,7 +65,6 @@ namespace LacquaMessenger.Infra
 
         public DbSet<Anexo> anexos { get; set; }
         public DbSet<Campanha> campanhas { get; set; }
-        public DbSet<ChatMenssagem> chatMenssagems {  get; set; }  
         public DbSet<Config> configs { get; set; }
         public DbSet<Contato> contatos { get; set; }
         public DbSet<Conversa> conversas { get; set; }
@@ -77,7 +72,6 @@ namespace LacquaMessenger.Infra
         public DbSet<FluxoAtendimento> fluxoAtendimentos { get; set; }
         public DbSet<HistoricoCampanha> historicoCampanhas { get; set; }
         public DbSet<Lista> listas { get; set; }
-        public DbSet<ListaChat> listaChats { get; set; }
         public DbSet<Log> logs { get; set; }
         public DbSet<Mensagem> mensagens { get; set; }
 
@@ -99,58 +93,50 @@ namespace LacquaMessenger.Infra
 
             modelBuilder.Entity<Anexo>()
                         .ToTable("Anexos")
-                        .HasKey(a => a.Id);
+                        .HasKey(a => a.IdAnexo);
 
             modelBuilder.Entity<Campanha>()
                         .ToTable("Campanhas")
-                        .HasKey(c => c.Id);
+                        .HasKey(c => c.IdCampanha);
 
-            modelBuilder.Entity<ChatMenssagem>()
-                        .ToTable("ChatMenssagems")
-                        .HasKey(c => c.Id);
 
             modelBuilder.Entity<Config>()
                         .ToTable("Configs")
-                        .HasKey(c => c.Id);
+                        .HasKey(c => c.IdConfig);
 
             modelBuilder.Entity<Contato>()
                         .ToTable("Contatos")
-                        .HasKey(c => c.Id);
+                        .HasKey(c => c.IdContato);
 
             modelBuilder.Entity<Conversa>()
                         .ToTable("Conversas")
-                        .HasKey(c => c.Id);
+                        .HasKey(c => c.IdConversa);
 
             modelBuilder.Entity<EmpresaCliente>()
                         .ToTable("EmpresaClientes")
-                        .HasKey(e => e.Id);
+                        .HasKey(e => e.IdEmpresa);
 
             modelBuilder.Entity<FluxoAtendimento>()
                         .ToTable("FluxoAtendimentos")
-                        .HasKey(f => f.Id);
-
-
+                        .HasKey(f => f.IdFluxoAtendimento);
 
             modelBuilder.Entity<Lista>()
                         .ToTable("Listas")
-                        .HasKey(e => e.Id);
+                        .HasKey(e => e.IdLista);
  
-            modelBuilder.Entity<ListaChat>()
-                        .ToTable("ListaChats")
-                        .HasKey(l => l.Id);
 
             modelBuilder.Entity<Log>()
                         .ToTable("Logs")
-                        .HasKey(l => l.Id);
+                        .HasKey(l => l.IdLog);
 
             modelBuilder.Entity<Mensagem>()
                         .ToTable("Mensagens")
-                        .HasKey(m => m.Id);
+                        .HasKey(m => m.IdMensagem);
 
 
             modelBuilder.Entity<MensagemQueue>()
                         .ToTable("MensagemQueues")
-                        .HasKey(m => m.Id);
+                        .HasKey(m => m.IdQueue);
 
             modelBuilder.Entity<Ofensa>()
                         .ToTable("Ofensas")
@@ -158,84 +144,50 @@ namespace LacquaMessenger.Infra
 
             modelBuilder.Entity<OpccaoLista>()
                         .ToTable("OpccaoListas")
-                        .HasKey(o => o.Id);
+                        .HasKey(o => o.IdOpcaoLista);
 
             modelBuilder.Entity<Parametro>()
                         .ToTable("Parametros")
-                        .HasKey(p => p.Id);
+                        .HasKey(p => p.IdParametro);
 
             modelBuilder.Entity<Servico>()
                         .ToTable("Servicos")
-                        .HasKey(s => s.Id);
+                        .HasKey(s => s.IdServico);
 
             modelBuilder.Entity<Sessao>()
                         .ToTable("Sessaos")
-                        .HasKey(s => s.Id);
+                        .HasKey(s => s.IdSession);
 
             modelBuilder.Entity<Tipos>()
                         .ToTable("Tipos")
-                        .HasKey(t => t.Id);
+                        .HasKey(t => t.IdTipo);
 
             modelBuilder.Entity<Usuario>()
                         .ToTable("Usuarios")
-                        .HasKey(u => u.Id);
+                        .HasKey(u => u.IdUsr);
 
             modelBuilder.Entity<Sessao>(entity =>
             {
                 entity.ToTable("Sessao");
 
-                entity.HasKey(s => s.Id);
+                entity.HasKey(s => s.IdSession);
 
 
                 // Relacionamento com Mensagem (FluxoDestinoEsperado)
-                entity.HasOne(s => s.Contato)
-                    .WithMany()
-                    .HasForeignKey(s => s.ContatoId)
-                    .OnDelete(DeleteBehavior.NoAction);
 
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Usuario)
-                    .WithMany()
-                    .HasForeignKey(s => s.UsuarioId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
 
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Conversa)
-                    .WithMany()
-                    .HasForeignKey(s => s.ConversaId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
 
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Config)
-                    .WithMany()
-                    .HasForeignKey(s => s.ConfigId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
             });
 
             modelBuilder.Entity<HistoricoCampanha>(entity =>
             {
                 entity.ToTable("HistoricoCampanhas");
 
-                entity.HasKey(s => s.Id);
+                entity.HasKey(s => s.IdHistoricoCampanha);
 
 
                 // Relacionamento com Mensagem (FluxoDestinoEsperado)
-                entity.HasOne(s => s.Campanha)
-                    .WithMany()
-                    .HasForeignKey(s => s.CampanhaId)
-                    .OnDelete(DeleteBehavior.NoAction);
 
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Contato)
-                    .WithMany()
-                    .HasForeignKey(s => s.ContatoId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
-
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Conversa)
-                    .WithMany()
-                    .HasForeignKey(s => s.ConversaId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
             });
 
 
@@ -243,20 +195,11 @@ namespace LacquaMessenger.Infra
             {
                 entity.ToTable("Parametro");
 
-                entity.HasKey(s => s.Id);
+                entity.HasKey(s => s.IdParametro);
 
 
                 // Relacionamento com Mensagem (FluxoDestinoEsperado)
-                entity.HasOne(s => s.MensagemSaudacao)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdMensagemSaudacao)
-                    .OnDelete(DeleteBehavior.NoAction);
 
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.MensagemErroValid)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdMensagemErroValid)
-                    .OnDelete(DeleteBehavior.NoAction); ;
             });
 
 
@@ -264,58 +207,17 @@ namespace LacquaMessenger.Infra
             {
                 entity.ToTable("StatusAtendimentos");
 
-                entity.HasKey(s => s.Id);
+                entity.HasKey(s => s.IdStatusAtendimento);
 
-                // Relacionamento com Mensagem (FluxoDestinoEsperado)
-                entity.HasOne(s => s.Campanha)
-                    .WithMany()
-                    .HasForeignKey(s => s.CampanhaId)
-                    .OnDelete(DeleteBehavior.NoAction);
-
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Contato)
-                    .WithMany()
-                    .HasForeignKey(s => s.ContatoId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
-
-                // Relacionamento com Mensagem (FluxoDestinoInesperado)
-                entity.HasOne(s => s.Conversa)
-                    .WithMany()
-                    .HasForeignKey(s => s.ConversaId)
-                    .OnDelete(DeleteBehavior.NoAction); ;
-
-                // Relacionamento com FluxoAtendimento (FluxoDestinoEsperado)
-                entity.HasOne(s => s.FluxoDestinoEsperado)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdFluxoDestinoEsperado)
-                    .OnDelete(DeleteBehavior.NoAction); ;
-
-                // Relacionamento com FluxoAtendimento (FluxoDestinoInesperado)
-                entity.HasOne(s => s.FluxoDestinoInesperado)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdFluxoDestinoInesperado)
-                    .OnDelete(DeleteBehavior.NoAction); 
-
-                // Relacionamento com FluxoAtendimento (FluxoDesistencia)
-                entity.HasOne(s => s.FluxoDesistencia)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdFluxoDesistencia)
-                    .OnDelete(DeleteBehavior.NoAction); 
-
-                // Relacionamento com FluxoAtendimento (FluxoOfensa)
-                entity.HasOne(s => s.FluxoOfensa)
-                    .WithMany()
-                    .HasForeignKey(s => s.IdFluxoOfensa)
-                    .OnDelete(DeleteBehavior.NoAction); 
+ 
             });
 
 
             modelBuilder.Entity<Usuario>().HasData(
                 new Usuario
                 {
-                    Id = 1,
+                    IdUsr = 1,
                     NomeUsuario="Administrador",
-                    Nome = "Admin",
                     Login = "Admin",
                     Senha =  Crypto.Encrypt("102030") ,
                     Permissao = 2

@@ -25,6 +25,17 @@
   <ItemGroup>
     <ProjectReference Include="..\Core\LacquaMessenger.Core.csproj" />
     <ProjectReference Include="..\LacquaMessenger.App\LacquaMessenger.App.csproj" />
+    <ProjectReference Include="..\LacquaMessenger.Common\LacquaMessenger.Common.csproj" />
+    <ProjectReference Include="..\MessageBroker.RabbitMq\MessageBroker.RabbitMq.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cert-VRWP3A4GGOFF7YXMHSNGVYLEKAS65L44.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="pk-VRWP3A4GGOFF7YXMHSNGVYLEKAS65L44.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -26,7 +26,7 @@ namespace LacquaMessenger.App.Security
             {
                var usr =  _useCase.Get().Where(l => l.Login == username && l.Senha == SenhaCrypt).FirstOrDefault();
                if (usr != null) { 
-                    usr.TokenLogin =  TokenHelper.CreateToken(usr.Id, usr.NomeUsuario,0, usr.Permissao);
+                    usr.TokenLogin =  TokenHelper.CreateToken(usr.IdUsr, usr.NomeUsuario,0, usr.Permissao);
                     usr.Logado = true;
                     _useCase.Update(usr);
 

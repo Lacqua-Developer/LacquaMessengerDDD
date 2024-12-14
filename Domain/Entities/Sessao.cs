@@ -1,25 +1,28 @@
-﻿using LacquaMessenger.Core.Entities;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class Sessao : Base    {
-        public Sessao() { }
+    public partial class Sessao
+    {
+        public Sessao()
+        {
 
-        public int ContatoId { get; set; }
-        public int UsuarioId { get; set; }
-        public DateTime DataCriacao { get; set; }
-        public DateTime DataAtendimento { get; set; }
-        public DateTime DataEncerramento { get; set; }
-        public int ConversaId { get; set; }
-        public int ConfigId { get; set; }
-        public int QtdeNLido { get; set; }
+        }
 
-        public Usuario Usuario { get; set; }
-        public Contato Contato { get; set; }
-        public Conversa Conversa { get; set; }
-        public Config Config { get; set; }
-
+        [Key]
+        public int IdSession { get; set; }
+        public int? ContatoIdcontato { get; set; }
+        public int? UsuarioIdUsuario { get; set; }
+        public DateTime? DataCriacao { get; set; }
+        public DateTime? DataAtendimento { get; set; }
+        public DateTime? DataEncerramento { get; set; }
+        public int? ConfigIdconfig { get; set; }
+        public int? Origem { get; set; }
+        public int? Classificacao { get; set; }
+        public int? Motivo { get; set; }
+        public string? Observacao { get; set; }
 
     }
 }

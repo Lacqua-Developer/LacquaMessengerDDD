@@ -1,7 +1,4 @@
-﻿using LacquaMessenger.App;
-using LacquaMessenger.Core.UseCase;
-using LacquaMessenger.Domain.Entities;
-using LacquaMessenger.Domain.Repositories;
+﻿using LacquaMessenger.Domain.Entities;
 using LacquaMessenger.Domain.UseCases;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -30,12 +27,12 @@ namespace LacquaMessenger.Api.Controllers
             return _useCase.Get();
         }
 
-        // GET api/<ConfigController>/5
-        [HttpGet("{id}")]
-        public Config Get(int id)
-        {
-            return _useCase.Get(id);
-        }
+        //// GET api/<ConfigController>/5
+        //[HttpGet("{id}")]
+        //public Config Get(int id)
+        //{
+        //    return _useCase.Get(id);
+        //}
 
         // POST api/<ConfigController>
         [HttpPost]
@@ -51,11 +48,11 @@ namespace LacquaMessenger.Api.Controllers
             _useCase.AddOrUpdate(value);
         }
 
-        // DELETE api/<ConfigController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-            _useCase.Delete(id);
-        }
+        //// DELETE api/<ConfigController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //    _useCase.Delete(id);
+        //}
     }
 }

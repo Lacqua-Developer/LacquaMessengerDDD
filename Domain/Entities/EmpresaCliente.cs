@@ -1,14 +1,15 @@
-﻿using LacquaMessenger.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class EmpresaCliente :Base
+    public partial class EmpresaCliente
     {
-        public EmpresaCliente() { }
-
-        public string Nome { get; set; }
-        public string Logotipo { get; set; }
-        public string Instrucoes { get; set; }
-
+        [Key]
+        public int? IdEmpresa { get; set; }
+        public string? Nome { get; set; }
+        public string? LogoTipo { get; set; }
+        public string? Instrucoes { get; set; }
     }
 }

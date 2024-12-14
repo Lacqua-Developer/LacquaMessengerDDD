@@ -4,13 +4,12 @@ namespace LacquaMessenger.Core.Entities
 {
     public abstract class Base
     {
-        private string nome;
+        //private string nome;
 
-        [Key]
-        public int Id { get; set; }
-        public string Nome { get { return nome; } set { nome = (value != null ? value.ToUpper() : null); } }
-        public DateTime? DtInclusao { get; set; }
-        public DateTime? DtAlteracao { get; set; }
+        //public int Id { get; set; }
+        //public string Nome { get { return nome; } set { nome = (value != null ? value.ToUpper() : null); } }
+        //public DateTime? DtInclusao { get; set; }
+        //public DateTime? DtAlteracao { get; set; }
 
     }
 

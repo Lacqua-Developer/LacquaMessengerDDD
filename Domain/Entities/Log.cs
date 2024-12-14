@@ -1,15 +1,15 @@
-﻿using LacquaMessenger.Core.Entities;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class Log : Base
+    public partial class Log
     {
-        public Log() { }    
-
-        public DateTime Data { get; set; }
-        public string Tipo { get; set; }
-        public string Mensagem { get; set; }
-
+        [Key]
+        public int IdLog { get; set; }
+        public DateTime? Data { get; set; }
+        public string? Tipo { get; set; }
+        public string? Mensagem { get; set; }
     }
 }

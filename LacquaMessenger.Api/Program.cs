@@ -3,8 +3,10 @@ using LacquaMessenger.App;
 using LacquaMessenger.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.SqlServer.Management.SqlParser.Metadata;
 using System.Configuration;
 using System.Reflection;
+using System.Text.Json.Serialization;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,10 +17,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddJwt();
-
+builder.Services.AddServiceMessageQueueRabbitMq();
+builder.Services.ConfigureOptions();
 builder.Services.AddUseCase<Config>();
 builder.Services.AddUseCase<Usuario>();
-
+builder.Services.AddInfra<Contato>();
 
 
 
@@ -65,6 +68,39 @@ builder.Services.AddSwaggerGen(_ =>
 });
 
 
+builder.WebHost.ConfigureAppConfiguration((context, configuration) =>
+{
+    configuration
+        .SetBasePath(AppContext.BaseDirectory)
+        .AddJsonFile("appsettings.json")
+        .AddJsonFile($"appsettings.{context.HostingEnvironment.EnvironmentName}.json", optional: true)
+        .AddEnvironmentVariables("API_");
+});
+
+builder.WebHost.ConfigureServices((webHost, services) =>
+{
+    services.AddSingleton(webHost.Configuration);
+    // Add services to the container.
+    services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+
+    services.AddRouting(options => options.LowercaseUrls = true);
+
+    services.AddCors(options =>
+    {
+        options.AddPolicy("CorsPolicy", builder =>
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
+    });
+    services.AddHttpContextAccessor();
+
+});
+
+
 
 var app = builder.Build();
 
@@ -75,6 +111,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
@@ -82,5 +120,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    await scope.ServiceProvider.ExecuteMigrations().ConfigureAwait(false);
+}
 
 app.Run();

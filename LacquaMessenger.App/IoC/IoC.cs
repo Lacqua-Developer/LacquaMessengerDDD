@@ -12,6 +12,8 @@ using LacquaMessenger.Domain.Service;
 using LacquaMessenger.Domain.Models;
 using LacquaMessenger.Core.UseCase;
 using LacquaMessenger.Domain.UseCases;
+using LacquaMessenger.App.Service;
+using LacquaMessenger.Domain.Entities;
 namespace LacquaMessenger.App
 {
     public static class IoC
@@ -26,7 +28,7 @@ namespace LacquaMessenger.App
             services.AddScoped<IRepository<T>, Repository<T>>();
 
             // Registra a implementação do serviço e a interface
-            services.AddScoped<IService<T>, EntityService<T>>();
+            //services.AddScoped<IService<T>, EntityService<T>>();
 
             services.AddScoped<Context>();
             return services;
@@ -38,9 +40,11 @@ namespace LacquaMessenger.App
             services.AddScoped<IRepository<T>, Repository<T>>();
 
             // Registra a implementação do serviço e a interface
-            services.AddScoped<IService<T>, EntityService<T>>();
+            //services.AddScoped<IService<T>, EntityService<T>>();
 
             services.AddScoped<Context>();
+            services.AddScoped<ContatoService>();
+
             return services;
         }
 

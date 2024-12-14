@@ -1,26 +1,14 @@
-﻿using LacquaMessenger.Core.Entities;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace LacquaMessenger.Domain.Entities
 {
-    public class Ofensa : Base
+    public partial class Ofensa
     {
-
-        public Ofensa() { }
-
-        public Ofensa(object _id, object _palavra, object _composta)
-        {
-            int i = 0;
-            bool b = false;
-
-            int.TryParse(_id.ToString(), out i);
-            bool.TryParse(_composta.ToString(), out b);
-
-            this.Id = i;
-            composta = b;
-            palavra = _palavra.ToString();
-        }
-
-        public string palavra { get; set; }
-        public bool composta { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public string? Palavra { get; set; }
+        public bool? Composta { get; set; }
     }
 }

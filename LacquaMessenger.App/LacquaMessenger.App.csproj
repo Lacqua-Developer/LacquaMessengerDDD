@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\AnalyzeResponseBot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
 
@@ -14,6 +18,10 @@
     <ProjectReference Include="..\Core\LacquaMessenger.Core.csproj" />
     <ProjectReference Include="..\Domain\LacquaMessenger.Domain.csproj" />
     <ProjectReference Include="..\LacquaMessenger.Infra\LacquaMessenger.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\" />
   </ItemGroup>
 
 </Project>
