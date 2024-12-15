@@ -1,0 +1,75 @@
+# Bloco do servidor para redirecionamento de HTTP para HTTPS
+server {
+    listen 80;  # Apenas um bloco deve ser default_server
+    server_name lacquasistemas.com.br;  # Altere pelo seu domínio
+
+    # Redireciona todas as requisições HTTP para HTTPS
+    return 301 https://$host$request_uri;
+}
+# Bloco do servidor para HTTPS com SSL
+server {
+    listen 443 ssl;
+    server_name www.lacquasistemas.com.br;  # Inclui www para evitar conflitos
+    access_log /var/log/nginx/mono-fastcgi.log;
+
+    # Caminho para os certificados SSL
+    ssl_certificate /etc/ssl/certs/certificate.crt;  
+    ssl_certificate_key /etc/ssl/private/private.key;  
+    #ssl_trusted_certificate /etc/ssl/certs/ca_bundle.crt;  
+
+    # Configurações SSL adicionais para segurança
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers "EECDH+AESGCM:EDH+AESGCM";
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    ssl_session_tickets off;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    resolver 8.8.8.8 8.8.4.4 valid=300s;
+    resolver_timeout 5s;
+
+    # Defina o diretório raiz da aplicação Mono
+    root /var/www/sample-app;
+
+    # Desativa exibição de informações do servidor
+    server_tokens off;
+
+    # Configuração para a página principal ou arquivos estáticos
+    location / {
+        index index.html index.htm default.html;
+        try_files $uri $uri/ =404;
+    }
+
+    # Configuração para rotas de API usando Mono e FastCGI
+    location /api/ {
+        fastcgi_index index;
+        fastcgi_pass unix:/var/run/mono-fastcgi.sock;  
+        include /etc/nginx/fastcgi_params;
+    }
+
+    # Configuração Swagger
+    location /swagger/ {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /swagger/v1/swagger.json {
+        proxy_pass http://localhost:5000/swagger/v1/swagger.json;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Configuração para arquivos estáticos, se houver, como CSS e JS
+    location ~* \.(css|js|jpg|jpeg|png|gif|ico|svg)$ {
+        expires 30d;
+        access_log off;
+    }
+
+    # Configuração para bloqueio de acesso a diretórios ocultos e arquivos específicos
+    location ~ /\.ht {
+        deny all;
+    }
+}

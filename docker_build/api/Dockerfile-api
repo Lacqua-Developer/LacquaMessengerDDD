@@ -1,0 +1,83 @@
+# Use a imagem Mono para projetos .NET Framework no Linux
+FROM mono:latest
+
+# Atualize pacotes e instale dependências adicionais
+RUN apt-get update \
+  && apt-get install -y \
+  iproute2 supervisor ca-certificates-mono fsharp mono-vbnc nuget \
+  referenceassemblies-pcl mono-fastcgi-server4 nginx nginx-extras git \
+  && rm -rf /var/lib/apt/lists/* /tmp/* \
+  && echo "daemon off;" | cat - /etc/nginx/nginx.conf > temp && mv temp /etc/nginx/nginx.conf \
+  && sed -i -e 's/www-data/root/g' /etc/nginx/nginx.conf
+
+# Instala Node.js e npm
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && \
+    apt-get install -y nodejs
+
+# Copie a chave SSH privada para o contêiner e configure permissões
+COPY ssh/id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa \
+  && ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+# Clone o repositório privado e compile o projeto usando msbuild
+WORKDIR /app
+RUN git clone git@github.com:LacquaRep/LacquaChat.git . 
+
+
+# Gera um valor aleatório para REFRESH e invalida o cache
+ARG NO_CACHE
+ENV REFRESH=$NO_CACHE
+RUN git pull && echo $REFRESH
+
+# Instale as dependências do projeto Angular e compile
+##WORKDIR /app/LacquaBot 
+##RUN npm install --legacy-peer-deps
+##RUN npm run build
+
+WORKDIR /app
+# Limpe o diretório de pacotes locais para evitar possíveis conflitos
+RUN rm -rf /app/packages
+
+# Instale o pacote NuGet Microsoft.CodeAnalysis.Analyzers manualmente
+RUN nuget install Microsoft.CodeAnalysis.Analyzers -Version 3.0.0 -OutputDirectory /app/packages
+RUN nuget install Microsoft.CodeDom.Providers.DotNetCompilerPlatform -Version 1.0.0 -OutputDirectory /app/packages
+
+# Restaure pacotes NuGet usando o arquivo de solução para cobrir todas as dependências
+RUN nuget restore /app/WhatsAppGateway.sln -PackagesDirectory /app/packages || \
+    nuget restore /app/WhatsAppGateway.api/WhatsAppGateway.api.csproj -PackagesDirectory /app/packages
+    
+# Execute o publish usando msbuild
+RUN mkdir -p /var/www/sample-app 
+RUN mkdir -p /var/www/sample-app/bin
+# Execute o publish usando msbuild com configuração completa de publicação
+RUN msbuild /app/WhatsAppGateway.api/WhatsAppGateway.api.csproj \
+    /p:Configuration=Release \
+    /p:DeployOnBuild=true \
+    /p:PublishProfile=FileSystem \
+    /p:WebPublishMethod=FileSystem \
+    /p:OutputPath=/app/publish \
+  && cp -r /app/publish/_PublishedWebsites/WhatsAppGateway.api/* /var/www/sample-app/ \
+  && chmod -R 755 /var/www/sample-app
+
+# Copie os arquivos compilados Angular para o diretório do servidor
+##RUN cp -r /app/LacquaBot/dist/LacquaBot/* /var/www/sample-app/
+
+# Copie os certificados SSL para o contêiner
+COPY ssl/ca_bundle.crt /etc/ssl/certs/ca_bundle.crt
+COPY ssl/private.key /etc/ssl/private/private.key
+COPY ssl/certificado_e_ca.crt /etc/ssl/certs/certificate.crt
+
+# Copie as configurações do Nginx e supervisord
+COPY nginx/sites-available/default /etc/nginx/conf.d/default.conf
+COPY pools/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY pools /etc/mono/pools
+COPY nginx/ /etc/nginx/
+
+# Exponha as portas 80 e 443 para o servidor web
+EXPOSE 80 443 5000
+
+# Configure o supervisord como ponto de entrada do contêiner
+ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf" ]
+
+
+

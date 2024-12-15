@@ -1,0 +1,34 @@
+# Use a base image. This example uses the official Node.js image from Docker Hub.
+FROM node:21
+
+
+COPY ssh/id_rsa /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa \
+  && ssh-keyscan github.com >> /root/.ssh/known_hosts
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Checkout Git
+RUN git clone git@github.com:LacquaRep/LacquaChat.git . 
+
+ARG NO_CACHE
+ENV REFRESH=$NO_CACHE
+RUN git pull && echo $REFRESH
+
+WORKDIR /app/Lacqua.Websocket 
+
+COPY ssh/. /app/Lacqua.Websocket/ssh/lacquasistemas.com.br/.
+RUN ls /app/Lacqua.Websocket/ssh/lacquasistemas.com.br/*
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code to the container
+COPY . .
+
+# Expose the port on which your Node.js application runs
+EXPOSE 3334 3335
+
+# Command to run your Node.js application
+CMD ["node", "index-auth.js"]

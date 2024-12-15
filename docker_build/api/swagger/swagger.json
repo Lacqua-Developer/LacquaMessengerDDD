@@ -1,0 +1,2750 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "V1",
+    "title": "WhatsAppGateway",
+    "x-swagger-net-version": "8.5.12.001"
+  },
+  "host": "localhost:58104",
+  "schemes": ["http"],
+  "paths": {
+    "/api/Atendimento/Get": {
+      "get": {
+        "tags": ["Atendimento"],
+        "operationId": "Atendimento_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Atendimento" },
+              "xml": { "name": "Atendimento", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Atendimento/Get/{id}": {
+      "get": {
+        "tags": ["Atendimento"],
+        "operationId": "Atendimento_GetApiAtendimentoGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Atendimento" }
+          }
+        }
+      }
+    },
+    "/api/Atendimento/Post": {
+      "post": {
+        "tags": ["Atendimento"],
+        "operationId": "Atendimento_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Atendimento" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Atendimento" }
+          }
+        }
+      }
+    },
+    "/api/Atendimento/Put/{id}": {
+      "put": {
+        "tags": ["Atendimento"],
+        "operationId": "Atendimento_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Atendimento" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Atendimento" }
+          }
+        }
+      }
+    },
+    "/api/Atendimento/Delete/{id}": {
+      "delete": {
+        "tags": ["Atendimento"],
+        "operationId": "Atendimento_Delete",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "operationId": "Auth_Login",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/LoginRequest" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/Auth/get": {
+      "get": {
+        "tags": ["Auth"],
+        "operationId": "Auth_get",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "usr",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        }
+      }
+    },
+    "/api/Auth/getUsuarios": {
+      "get": {
+        "tags": ["Auth"],
+        "operationId": "Auth_getUsuarios",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Usuario" },
+              "xml": { "name": "Usuario", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Auth/post": {
+      "post": {
+        "tags": ["Auth"],
+        "operationId": "Auth_post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "usr",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        }
+      }
+    },
+    "/api/BotWhare/Get": {
+      "get": {
+        "tags": ["BotWhare"],
+        "operationId": "BotWhare_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/BotWhare/emoji": {
+      "post": {
+        "tags": ["BotWhare"],
+        "operationId": "BotWhare_emoji",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          { "name": "msg", "in": "query", "required": true, "type": "string" }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/BotWhare/post": {
+      "post": {
+        "tags": ["BotWhare"],
+        "operationId": "BotWhare_post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "valueObj",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/BotWhare/postVenom": {
+      "post": {
+        "tags": ["BotWhare"],
+        "operationId": "BotWhare_postVenom",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "msg",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/MensagemWhatsVenom" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/BotWhare/ACK": {
+      "post": {
+        "tags": ["BotWhare"],
+        "operationId": "BotWhare_ACK",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "ack",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/ACK" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/Campanha/GetCampanha": {
+      "get": {
+        "tags": ["Campanha"],
+        "operationId": "Campanha_GetCampanha",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Campanha" },
+              "xml": { "name": "Campanha", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Config/Get": {
+      "get": {
+        "tags": ["Config"],
+        "operationId": "Config_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Config" },
+              "xml": { "name": "Config", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Config/GetId/{id}": {
+      "get": {
+        "tags": ["Config"],
+        "operationId": "Config_GetId",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Config" }
+          }
+        }
+      }
+    },
+    "/api/Config/Post": {
+      "post": {
+        "tags": ["Config"],
+        "operationId": "Config_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Config" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Config/Put/{id}": {
+      "put": {
+        "tags": ["Config"],
+        "operationId": "Config_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Config/Delete/{id}": {
+      "delete": {
+        "tags": ["Config"],
+        "operationId": "Config_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Contato/Get": {
+      "get": {
+        "tags": ["Contato"],
+        "operationId": "Contato_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contato/Get/{id}": {
+      "get": {
+        "tags": ["Contato"],
+        "operationId": "Contato_GetApiContatoGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        }
+      }
+    },
+    "/api/Contato/GetChave/{id}": {
+      "get": {
+        "tags": ["Contato"],
+        "operationId": "Contato_GetChave",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contato/Post": {
+      "post": {
+        "tags": ["Contato"],
+        "operationId": "Contato_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        }
+      }
+    },
+    "/api/Contato/Put/{id}": {
+      "put": {
+        "tags": ["Contato"],
+        "operationId": "Contato_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        }
+      }
+    },
+    "/api/Contato/Delete/{id}": {
+      "delete": {
+        "tags": ["Contato"],
+        "operationId": "Contato_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Contatos/EnviaRabbitMQ": {
+      "post": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_EnviaRabbitMQ",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/Contatos/GetEnvioLista": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetEnvioLista",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/EnvioLista" }
+          }
+        }
+      }
+    },
+    "/api/Contatos/Get": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/Get/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetApiContatosGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/GetLight": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetLight",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/GetContatosSessao/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetContatosSessao",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/GetContatosEspera": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetContatosEspera",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/GetConversas/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_GetConversas",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        }
+      }
+    },
+    "/api/Contatos/setProfileImage": {
+      "post": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_setProfileImage",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Contatos/getContatosUsr/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_getContatosUsr",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/getContatosChave/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_getContatosChave",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/getContatosUsrLight/{id}": {
+      "get": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_getContatosUsrLight",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Contatos/SetContato": {
+      "post": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_SetContato",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        }
+      }
+    },
+    "/api/Contatos/Put/{id}": {
+      "put": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Contatos/Delete/{id}": {
+      "delete": {
+        "tags": ["Contatos"],
+        "operationId": "Contatos_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Conversas/Get": {
+      "get": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Conversa" },
+              "xml": { "name": "Conversa", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Conversas/Get/{id}": {
+      "get": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_GetApiConversasGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Conversa" },
+              "xml": { "name": "Conversa", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Conversas/MsgQueue": {
+      "post": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_MsgQueue",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/MensagemQueue" }
+          }
+        }
+      }
+    },
+    "/api/Conversas/Post": {
+      "post": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "valueObj",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Conversa" }
+          }
+        }
+      }
+    },
+    "/api/Conversas/CheckConversa": {
+      "post": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_CheckConversa",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "ret",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Conversas/Put/{id}": {
+      "put": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Conversas/Delete/{id}": {
+      "delete": {
+        "tags": ["Conversas"],
+        "operationId": "Conversas_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/DashBoard/Get": {
+      "get": {
+        "tags": ["DashBoard"],
+        "operationId": "DashBoard_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "items": { "type": "string" }, "type": "array" }
+          }
+        }
+      }
+    },
+    "/api/DashBoard/Get/{id}": {
+      "get": {
+        "tags": ["DashBoard"],
+        "operationId": "DashBoard_GetApiDashBoardGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/DashBoard/Post": {
+      "post": {
+        "tags": ["DashBoard"],
+        "operationId": "DashBoard_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/DashBoard/Put/{id}": {
+      "put": {
+        "tags": ["DashBoard"],
+        "operationId": "DashBoard_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/DashBoard/Delete/{id}": {
+      "delete": {
+        "tags": ["DashBoard"],
+        "operationId": "DashBoard_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/DocFile/GetFile": {
+      "get": {
+        "tags": ["DocFile"],
+        "operationId": "DocFile_GetFile",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "fileName",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/DocFile/Post": {
+      "post": {
+        "tags": ["DocFile"],
+        "operationId": "DocFile_Post",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/DocFile/UploadFiles": {
+      "post": {
+        "tags": ["DocFile"],
+        "operationId": "DocFile_UploadFiles",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/Equipe/Get": {
+      "get": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Equipe" },
+              "xml": { "name": "Equipe", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Equipe/Get/{id}": {
+      "get": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_GetApiEquipeGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Equipe" }
+          }
+        }
+      }
+    },
+    "/api/Equipe/GetChave/{id}": {
+      "get": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_GetChave",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Equipe" },
+              "xml": { "name": "Equipe", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Equipe/Post": {
+      "post": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Equipe" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Equipe" }
+          }
+        }
+      }
+    },
+    "/api/Equipe/Put/{id}": {
+      "put": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Equipe" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Equipe" }
+          }
+        }
+      }
+    },
+    "/api/Equipe/Delete/{id}": {
+      "delete": {
+        "tags": ["Equipe"],
+        "operationId": "Equipe_Delete",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/ListaChat/GetListaAtivos/{id}": {
+      "get": {
+        "tags": ["ListaChat"],
+        "operationId": "ListaChat_GetListaAtivos",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/ListaChat" },
+              "xml": { "name": "ListaChat", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/ListaChat/GetListaEspera/{id}": {
+      "get": {
+        "tags": ["ListaChat"],
+        "operationId": "ListaChat_GetListaEspera",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/ListaChat" },
+              "xml": { "name": "ListaChat", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/ListaChat/GetListaContatos/{id}": {
+      "get": {
+        "tags": ["ListaChat"],
+        "operationId": "ListaChat_GetListaContatos",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/ListaChat" },
+              "xml": { "name": "ListaChat", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Meta/Get": {
+      "get": {
+        "tags": ["Meta"],
+        "operationId": "Meta_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/Meta/Post": {
+      "post": {
+        "tags": ["Meta"],
+        "operationId": "Meta_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "messageReceived",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/Meta/Put/{id}": {
+      "put": {
+        "tags": ["Meta"],
+        "operationId": "Meta_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Meta/Delete/{id}": {
+      "delete": {
+        "tags": ["Meta"],
+        "operationId": "Meta_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Pausas/Get": {
+      "get": {
+        "tags": ["Pausas"],
+        "operationId": "Pausas_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Pausas" },
+              "xml": { "name": "Pausas", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Pausas/Get/{id}": {
+      "get": {
+        "tags": ["Pausas"],
+        "operationId": "Pausas_GetApiPausasGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Pausas" }
+          }
+        }
+      }
+    },
+    "/api/Pausas/Post": {
+      "post": {
+        "tags": ["Pausas"],
+        "operationId": "Pausas_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Pausas" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Pausas" }
+          }
+        }
+      }
+    },
+    "/api/Pausas/Put/{id}": {
+      "put": {
+        "tags": ["Pausas"],
+        "operationId": "Pausas_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Pausas" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Pausas" }
+          }
+        }
+      }
+    },
+    "/api/Pausas/Delete/{id}": {
+      "delete": {
+        "tags": ["Pausas"],
+        "operationId": "Pausas_Delete",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Relatorio/get": {
+      "get": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Relatorio" },
+              "xml": { "name": "Relatorio", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_PostApiRelatorioGet",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Relatorio" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Relatorio" },
+              "xml": { "name": "Relatorio", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Relatorio/get/{id}": {
+      "get": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_GetApiRelatorioGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Relatorio" },
+              "xml": { "name": "Relatorio", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Relatorio/getid/{id}": {
+      "get": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_getid",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Relatorio" }
+          }
+        }
+      }
+    },
+    "/api/Relatorio/post": {
+      "post": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Relatorio" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Relatorio" },
+              "xml": { "name": "Relatorio", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Relatorio/put": {
+      "put": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_put",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Relatorio" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Relatorio" },
+              "xml": { "name": "Relatorio", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Relatorio/ResultRelatorio/{id}": {
+      "get": {
+        "tags": ["Relatorio"],
+        "operationId": "Relatorio_ResultRelatorio",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "items": { "type": "object" }, "type": "array" }
+          }
+        }
+      }
+    },
+    "/api/Sessao/GetContatosSessao/{id}": {
+      "get": {
+        "tags": ["Sessao"],
+        "operationId": "Sessao_GetContatosSessao",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Contato" },
+              "xml": { "name": "Contato", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Sessao/IniciaSessao": {
+      "post": {
+        "tags": ["Sessao"],
+        "operationId": "Sessao_IniciaSessao",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Sessao/CriaSessao": {
+      "post": {
+        "tags": ["Sessao"],
+        "operationId": "Sessao_CriaSessao",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Sessao" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Sessao" }
+          }
+        }
+      }
+    },
+    "/api/Sessao/FechaSessao": {
+      "post": {
+        "tags": ["Sessao"],
+        "operationId": "Sessao_FechaSessao",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Sessao/TransfSessao": {
+      "post": {
+        "tags": ["Sessao"],
+        "operationId": "Sessao_TransfSessao",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/TextoSugestao/Get": {
+      "get": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/TextoSugestao" },
+              "xml": { "name": "TextoSugestao", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/TextoSugestao/Get/{id}": {
+      "get": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_GetApiTextoSugestaoGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/TextoSugestao" }
+          }
+        }
+      }
+    },
+    "/api/TextoSugestao/GetChave/{id}": {
+      "get": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_GetChave",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/TextoSugestao" },
+              "xml": { "name": "TextoSugestao", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/TextoSugestao/TrocaTexto": {
+      "post": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_TrocaTexto",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Contato" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "string" } }
+        }
+      }
+    },
+    "/api/TextoSugestao/Post": {
+      "post": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/TextoSugestao" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/TextoSugestao" }
+          }
+        }
+      }
+    },
+    "/api/TextoSugestao/Put/{id}": {
+      "put": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/TextoSugestao/Delete/{id}": {
+      "delete": {
+        "tags": ["TextoSugestao"],
+        "operationId": "TextoSugestao_Delete",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "boolean" } }
+        }
+      }
+    },
+    "/api/Usuario/Get": {
+      "get": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Usuario" },
+              "xml": { "name": "Usuario", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuario/Get/{id}": {
+      "get": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_GetApiUsuarioGetById",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        }
+      }
+    },
+    "/api/Usuario/GetChave/{id}": {
+      "get": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_GetChave",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": { "$ref": "#/definitions/Usuario" },
+              "xml": { "name": "Usuario", "wrapped": true },
+              "type": "array"
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuario/Post": {
+      "post": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/Usuario" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Usuario/Put/{id}": {
+      "put": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_Put",
+        "consumes": ["application/json", "text/json"],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "value",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/Usuario/Delete/{id}": {
+      "delete": {
+        "tags": ["Usuario"],
+        "operationId": "Usuario_Delete",
+        "consumes": [],
+        "produces": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": { "204": { "description": "No Content" } }
+      }
+    },
+    "/api/WebHook/Get": {
+      "get": {
+        "tags": ["WebHook"],
+        "operationId": "WebHook_Get",
+        "consumes": [],
+        "produces": ["application/json", "text/json"],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/WebHook/Post": {
+      "post": {
+        "tags": ["WebHook"],
+        "operationId": "WebHook_Post",
+        "consumes": ["application/json", "text/json"],
+        "produces": ["application/json", "text/json"],
+        "parameters": [
+          {
+            "name": "messageReceived",
+            "in": "body",
+            "required": true,
+            "schema": { "type": "object" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Atendimento": {
+      "properties": {
+        "IdAtendimento": { "type": "integer", "format": "int32" },
+        "Usuario_IdUsr": { "type": "integer", "format": "int32" },
+        "DataInicio": { "type": "string", "format": "date-time" },
+        "DataFim": { "type": "string", "format": "date-time" },
+        "TipoAcao": { "type": "integer", "format": "int32" },
+        "TipoDetalhe": { "type": "integer", "format": "int32" }
+      },
+      "xml": { "name": "Atendimento" },
+      "type": "object"
+    },
+    "LoginRequest": {
+      "properties": {
+        "Username": { "type": "string" },
+        "Password": { "type": "string" }
+      },
+      "xml": { "name": "LoginRequest" },
+      "type": "object"
+    },
+    "Usuario": {
+      "properties": {
+        "IdUsr": { "type": "integer", "format": "int32" },
+        "NomeUsuario": { "type": "string" },
+        "Id_Externo": { "type": "string" },
+        "Permissao": { "type": "integer", "format": "int32" },
+        "Senha": { "type": "string" },
+        "Email": { "type": "string" },
+        "Login": { "type": "string" },
+        "Status": { "type": "boolean" },
+        "Celular": { "type": "string" },
+        "Confirmacao": { "type": "string" },
+        "IdConfig": { "type": "integer", "format": "int32" },
+        "Logado": { "type": "integer", "format": "int32" },
+        "NomePermissao": { "type": "string" },
+        "EquipeIdEquipe": { "type": "integer", "format": "int32" },
+        "Configs": {
+          "items": { "$ref": "#/definitions/Config" },
+          "xml": { "name": "Config", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Usuario" },
+      "type": "object"
+    },
+    "Config": {
+      "properties": {
+        "ID": { "type": "integer", "format": "int32" },
+        "Telefone": { "type": "string" },
+        "Senha": { "type": "string" },
+        "Apelido": { "type": "string" },
+        "Desabilitado": { "type": "boolean" },
+        "ChipLista": { "type": "boolean" },
+        "DataEnvio": { "type": "string", "format": "date-time" },
+        "QtdeEnvio": { "type": "integer", "format": "int32" },
+        "StatusConeccao": { "type": "boolean" },
+        "ret": { "type": "object" },
+        "TelFormat": { "type": "string" },
+        "EquipeIdequipe": { "type": "integer", "format": "int32" },
+        "TextoSugestao": {
+          "items": { "$ref": "#/definitions/TextoSugestao" },
+          "xml": { "name": "TextoSugestao", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Config" },
+      "type": "object"
+    },
+    "TextoSugestao": {
+      "properties": {
+        "Nome": { "type": "string" },
+        "idSugest": { "type": "integer", "format": "int32" },
+        "Texto": { "type": "string" },
+        "Config_IdConfig": { "type": "integer", "format": "int32" },
+        "Chip": { "$ref": "#/definitions/Config" }
+      },
+      "xml": { "name": "TextoSugestao" },
+      "type": "object"
+    },
+    "MensagemWhatsVenom": {
+      "properties": {
+        "id": { "type": "string" },
+        "body": { "type": "string" },
+        "type": { "type": "string" },
+        "t": { "type": "integer", "format": "int32" },
+        "notifyName": { "type": "string" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "self": { "type": "string" },
+        "ack": { "type": "integer", "format": "int32" },
+        "invis": { "type": "boolean" },
+        "isNewMsg": { "type": "boolean" },
+        "star": { "type": "boolean" },
+        "recvFresh": { "type": "boolean" },
+        "isFromTemplate": { "type": "boolean" },
+        "broadcast": { "type": "boolean" },
+        "mentionedJidList": { "items": { "type": "object" }, "type": "array" },
+        "isVcardOverMmsDocument": { "type": "boolean" },
+        "isForwarded": { "type": "boolean" },
+        "labels": { "items": { "type": "object" }, "type": "array" },
+        "ephemeralOutOfSync": { "type": "boolean" },
+        "chatId": { "type": "string" },
+        "fromMe": { "type": "boolean" },
+        "sender": { "$ref": "#/definitions/Sender" },
+        "timestamp": { "type": "integer", "format": "int32" },
+        "content": { "type": "string" },
+        "isGroupMsg": { "type": "boolean" },
+        "isMedia": { "type": "boolean" },
+        "isNotification": { "type": "boolean" },
+        "isPSA": { "type": "boolean" },
+        "chat": { "$ref": "#/definitions/Chat" },
+        "isOnline": { "type": "object" },
+        "lastSeen": { "type": "object" },
+        "quotedMsgObj": { "type": "object" },
+        "mediaData": { "$ref": "#/definitions/MediaData" }
+      },
+      "xml": { "name": "MensagemWhatsVenom" },
+      "type": "object"
+    },
+    "Sender": {
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "formattedName": { "type": "string" },
+        "isMe": { "type": "boolean" },
+        "isMyContact": { "type": "boolean" },
+        "isPSA": { "type": "boolean" },
+        "isUser": { "type": "boolean" },
+        "isWAContact": { "type": "boolean" },
+        "profilePicThumbObj": { "$ref": "#/definitions/ProfilePicThumbObj" },
+        "msgs": { "type": "object" }
+      },
+      "xml": { "name": "Sender" },
+      "type": "object"
+    },
+    "Chat": {
+      "properties": {
+        "id": { "type": "string" },
+        "lastReceivedKey": { "$ref": "#/definitions/LastReceivedKey" },
+        "unreadCount": { "type": "integer", "format": "int32" },
+        "muteExpiration": { "type": "integer", "format": "int32" },
+        "msgs": { "type": "object" },
+        "kind": { "type": "string" },
+        "isGroup": { "type": "boolean" },
+        "contact": { "$ref": "#/definitions/Contact" },
+        "groupMetadata": { "type": "object" },
+        "presence": { "$ref": "#/definitions/Presence" },
+        "isOnline": { "type": "object" },
+        "lastSeen": { "type": "object" }
+      },
+      "xml": { "name": "Chat" },
+      "type": "object"
+    },
+    "MediaData": {
+      "properties": {},
+      "xml": { "name": "MediaData" },
+      "type": "object"
+    },
+    "ProfilePicThumbObj": {
+      "properties": {
+        "eurl": { "type": "string" },
+        "id": { "type": "string" },
+        "img": { "type": "string" },
+        "imgFull": { "type": "string" },
+        "raw": { "type": "string" },
+        "tag": { "type": "string" }
+      },
+      "xml": { "name": "ProfilePicThumbObj" },
+      "type": "object"
+    },
+    "LastReceivedKey": {
+      "properties": {
+        "fromMe": { "type": "boolean" },
+        "remote": { "type": "string" },
+        "id": { "type": "string" },
+        "_serialized": { "type": "string" }
+      },
+      "xml": { "name": "LastReceivedKey" },
+      "type": "object"
+    },
+    "Contact": {
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "formattedName": { "type": "string" },
+        "isMe": { "type": "boolean" },
+        "isMyContact": { "type": "boolean" },
+        "isPSA": { "type": "boolean" },
+        "isUser": { "type": "boolean" },
+        "isWAContact": { "type": "boolean" },
+        "profilePicThumbObj": { "$ref": "#/definitions/ProfilePicThumbObj" },
+        "msgs": { "type": "object" }
+      },
+      "xml": { "name": "Contact" },
+      "type": "object"
+    },
+    "Presence": {
+      "properties": {
+        "id": { "type": "string" },
+        "chatstates": { "items": { "type": "object" }, "type": "array" }
+      },
+      "xml": { "name": "Presence" },
+      "type": "object"
+    },
+    "ACK": {
+      "properties": {
+        "id": { "$ref": "#/definitions/Id" },
+        "body": { "type": "string" },
+        "type": { "type": "string" },
+        "t": { "type": "integer", "format": "int64" },
+        "notifyName": { "type": "string" },
+        "from": { "type": "string" },
+        "to": { "type": "string" },
+        "self": { "type": "string" },
+        "ack": {
+          "type": "integer",
+          "format": "int32",
+          "enum": [-7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4]
+        },
+        "invis": { "type": "boolean" },
+        "isNewMsg": { "type": "boolean" },
+        "star": { "type": "boolean" },
+        "recvFresh": { "type": "boolean" },
+        "isFromTemplate": { "type": "boolean" },
+        "mentionedJidList": { "items": { "type": "object" }, "type": "array" },
+        "isVcardOverMmsDocument": { "type": "boolean" },
+        "isForwarded": { "type": "boolean" },
+        "labels": { "items": { "type": "object" }, "type": "array" },
+        "ephemeralStartTimestamp": { "type": "integer", "format": "int64" }
+      },
+      "xml": { "name": "ACK" },
+      "type": "object"
+    },
+    "Id": {
+      "properties": {
+        "fromMe": { "type": "boolean" },
+        "remote": { "type": "string" },
+        "id": { "type": "string" },
+        "_serialized": { "type": "string" }
+      },
+      "xml": { "name": "Id" },
+      "type": "object"
+    },
+    "Campanha": {
+      "properties": {
+        "IdCampanha": { "type": "integer", "format": "int32" },
+        "NomeCampanha": { "type": "string" },
+        "DataCriacao": { "type": "string", "format": "date-time" },
+        "DataEnvio": { "type": "string", "format": "date-time" },
+        "DataTermino": { "type": "string", "format": "date-time" },
+        "QtdeContact": { "type": "integer", "format": "int32" },
+        "BancoDados": { "type": "string" },
+        "IdIntegracao": { "type": "integer", "format": "int32" },
+        "Lista": {
+          "items": { "$ref": "#/definitions/Lista" },
+          "xml": { "name": "Lista", "wrapped": true },
+          "type": "array"
+        },
+        "Integracao": { "$ref": "#/definitions/Integracao" },
+        "FluxoAtendimento": {
+          "items": { "$ref": "#/definitions/FluxoAtendimento" },
+          "xml": { "name": "FluxoAtendimento", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Campanha" },
+      "type": "object"
+    },
+    "Lista": {
+      "properties": {
+        "IdLista": { "type": "integer", "format": "int32" },
+        "CampanhaIdCampanha": { "type": "integer", "format": "int32" },
+        "Nome": { "type": "string" },
+        "Documento": { "type": "string" },
+        "NomeDocumento": { "type": "string" },
+        "Chave": { "type": "string" },
+        "Telefone": { "type": "string" },
+        "ContatoIdContato": { "type": "integer", "format": "int32" },
+        "UserWhatsApp": { "type": "string" },
+        "Ativo": { "type": "boolean" },
+        "Status": { "type": "string" },
+        "ConversaIdConversa": { "type": "integer", "format": "int32" },
+        "Desativado": { "type": "boolean" },
+        "IdUsuario": { "type": "integer", "format": "int32" },
+        "FacebookId": { "type": "string" },
+        "Email": { "type": "string" },
+        "Sexo": { "type": "string" },
+        "Anexo1": { "type": "string" },
+        "Anexo2": { "type": "string" },
+        "Anexo3": { "type": "string" },
+        "CodBarras": { "type": "string" },
+        "IdEnvioLista": { "type": "integer", "format": "int32" },
+        "TelValidado": { "type": "boolean" },
+        "integracao": { "type": "integer", "format": "int32" },
+        "enviado": { "type": "boolean" },
+        "DtEnvio": { "type": "string", "format": "date-time" },
+        "Conversa": { "$ref": "#/definitions/Conversa" },
+        "usuario": { "$ref": "#/definitions/Usuario" },
+        "OpcaoLista": {
+          "items": { "$ref": "#/definitions/OpccaoLista" },
+          "xml": { "name": "OpccaoLista", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Lista" },
+      "type": "object"
+    },
+    "Integracao": {
+      "properties": {
+        "IdIntegracao": { "type": "integer", "format": "int32" },
+        "Campanha_IdCampanha": { "type": "integer", "format": "int32" },
+        "Tipo": { "type": "integer", "format": "int32" },
+        "TipoBusca": { "type": "integer", "format": "int32" },
+        "PrimVencto": { "type": "string", "format": "date-time" },
+        "Text": { "type": "string" },
+        "Usuario": { "type": "string" },
+        "Senha": { "type": "string" },
+        "url": { "type": "string" },
+        "IdListaTeste": { "type": "integer", "format": "int32" },
+        "ListaTeste": {
+          "items": { "$ref": "#/definitions/ListaTeste" },
+          "xml": { "name": "ListaTeste", "wrapped": true },
+          "type": "array"
+        },
+        "Calculos": {
+          "items": { "$ref": "#/definitions/CalculoIntegracao" },
+          "xml": { "name": "CalculoIntegracao", "wrapped": true },
+          "type": "array"
+        },
+        "ListaRetornadaQuery": {
+          "items": { "$ref": "#/definitions/Lista" },
+          "xml": { "name": "Lista", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Integracao" },
+      "type": "object"
+    },
+    "FluxoAtendimento": {
+      "properties": {
+        "IdFluxoAtendimento": { "type": "integer", "format": "int32" },
+        "CampanhaIdCampanha": { "type": "integer", "format": "int32" },
+        "Tipo": { "type": "integer", "format": "int32" },
+        "Ordem": { "type": "integer", "format": "int32" },
+        "IdMensagem": { "type": "integer", "format": "int32" },
+        "Condicao1": { "type": "integer", "format": "int32" },
+        "Condicao2": { "type": "integer", "format": "int32" },
+        "Saida": { "type": "integer", "format": "int32" },
+        "Ofensa": { "type": "integer", "format": "int32" },
+        "Chave": { "type": "string" },
+        "NomeFluxo": { "type": "string" },
+        "Finalizado": { "type": "boolean" },
+        "Mensagem": { "$ref": "#/definitions/Mensagem" }
+      },
+      "xml": { "name": "FluxoAtendimento" },
+      "type": "object"
+    },
+    "Conversa": {
+      "properties": {
+        "IdConversa": { "type": "integer", "format": "int32" },
+        "Usuarios_IdUsr": { "type": "integer", "format": "int32" },
+        "Contatos_IdContato": { "type": "integer", "format": "int32" },
+        "Config_IdConfig": { "type": "integer", "format": "int32" },
+        "Origem": { "type": "integer", "format": "int32" },
+        "IdConversaWhats": { "type": "string" },
+        "Sentido": { "type": "string" },
+        "Destino": { "type": "string" },
+        "Recebido": { "type": "boolean" },
+        "Lido": { "type": "boolean" },
+        "Enviado": { "type": "boolean" },
+        "Data": { "type": "string", "format": "date-time" },
+        "Mensagem": { "type": "string" },
+        "Usuario": { "$ref": "#/definitions/Usuario" },
+        "Contato": { "$ref": "#/definitions/Contato" },
+        "Anexo": { "$ref": "#/definitions/Anexo" },
+        "Config": { "$ref": "#/definitions/Config" },
+        "dias": { "type": "integer", "format": "int32" },
+        "MensagemQueue": { "$ref": "#/definitions/MensagemQueue" }
+      },
+      "xml": { "name": "Conversa" },
+      "type": "object"
+    },
+    "OpccaoLista": {
+      "properties": {
+        "IdOpcaoLista": { "type": "integer", "format": "int32" },
+        "ListaIdlista": { "type": "integer", "format": "int32" },
+        "Ordem": { "type": "integer", "format": "int32" },
+        "Opcao": { "type": "string" }
+      },
+      "xml": { "name": "OpccaoLista" },
+      "type": "object"
+    },
+    "ListaTeste": {
+      "properties": {
+        "IdListaTeste": { "type": "integer", "format": "int32" },
+        "Nome": { "type": "string" },
+        "Telefone": { "type": "string" },
+        "Email": { "type": "string" }
+      },
+      "xml": { "name": "ListaTeste" },
+      "type": "object"
+    },
+    "CalculoIntegracao": {
+      "properties": {
+        "IdCalc": { "type": "integer", "format": "int32" },
+        "Integracao_integracao": { "type": "integer", "format": "int32" },
+        "Parcelas": { "type": "integer", "format": "int32" },
+        "Desconto": { "type": "number", "format": "double" },
+        "Vencimento": { "type": "string", "format": "date-time" }
+      },
+      "xml": { "name": "CalculoIntegracao" },
+      "type": "object"
+    },
+    "Mensagem": {
+      "properties": {
+        "IdMensagem": { "type": "integer", "format": "int32" },
+        "NomeMensagem": { "type": "string" },
+        "Tipo": { "type": "integer", "format": "int32" },
+        "Texto": { "type": "string" },
+        "TipoMensagem": { "$ref": "#/definitions/Tipos" }
+      },
+      "xml": { "name": "Mensagem" },
+      "type": "object"
+    },
+    "Contato": {
+      "properties": {
+        "IdContato": { "type": "integer", "format": "int32" },
+        "NomeInformado": { "type": "string" },
+        "Documento": { "type": "string" },
+        "NomeDoc": { "type": "string" },
+        "Codigo": { "type": "string" },
+        "IdWhatsApp": { "type": "string" },
+        "Telefone": { "type": "string" },
+        "UserWhatsApp": { "type": "string" },
+        "ClienteExterno": { "type": "string" },
+        "Cadastro": { "type": "string" },
+        "Status": { "type": "string" },
+        "NomeRetornado": { "type": "string" },
+        "QtdeNLido": { "type": "integer", "format": "int32" },
+        "Email": { "type": "string" },
+        "FaceId": { "type": "string" },
+        "FaceRecipentId": { "type": "string" },
+        "Sexo": { "type": "string" },
+        "FaceMsgId": { "type": "string" },
+        "CampanhaIdCampanha": { "type": "integer", "format": "int32" },
+        "ImageProfile": { "type": "string" },
+        "IdConfig": { "type": "integer", "format": "int32" },
+        "UltimaMsg": { "type": "integer", "format": "int32" },
+        "DataUltimaMsg": { "type": "string", "format": "date-time" },
+        "UltimoAcesso": { "type": "string", "format": "date-time" },
+        "StatusAtendimento": { "$ref": "#/definitions/StatusAtendimento" },
+        "OpcaoLista": {
+          "items": { "$ref": "#/definitions/OpccaoLista" },
+          "xml": { "name": "OpccaoLista", "wrapped": true },
+          "type": "array"
+        },
+        "Conversa": {
+          "items": { "$ref": "#/definitions/Conversa" },
+          "xml": { "name": "Conversa", "wrapped": true },
+          "type": "array"
+        },
+        "Lista": { "$ref": "#/definitions/Lista" },
+        "Sessao": { "$ref": "#/definitions/Sessao" }
+      },
+      "xml": { "name": "Contato" },
+      "type": "object"
+    },
+    "Anexo": {
+      "properties": {
+        "IdAnexo": { "type": "integer", "format": "int32" },
+        "ConversasIdConversa": { "type": "integer", "format": "int32" },
+        "url": { "type": "string" },
+        "chave": { "type": "string" },
+        "EmpresaCliente": { "type": "integer", "format": "int32" },
+        "NomeArquivo": { "type": "string" },
+        "Erro": { "type": "string" },
+        "Tipo": { "type": "string" },
+        "Empresa": { "$ref": "#/definitions/EmpresaCliente" }
+      },
+      "xml": { "name": "Anexo" },
+      "type": "object"
+    },
+    "MensagemQueue": {
+      "properties": {
+        "IdQueue": { "type": "integer", "format": "int32" },
+        "Status": { "type": "boolean" },
+        "ConversaIdconversa": { "type": "integer", "format": "int32" },
+        "DataEnvio": { "type": "string", "format": "date-time" },
+        "Origem": { "type": "integer", "format": "int32" },
+        "Conversa": { "$ref": "#/definitions/Conversa" },
+        "Erro": { "type": "boolean" },
+        "Mensagem": { "type": "string" },
+        "Tentativas": { "type": "integer", "format": "int32" }
+      },
+      "xml": { "name": "MensagemQueue" },
+      "type": "object"
+    },
+    "Tipos": {
+      "properties": {
+        "IdTipo": { "type": "integer", "format": "int32" },
+        "Referencia": { "type": "string" },
+        "Valor": { "type": "string" },
+        "Descricao": { "type": "string" }
+      },
+      "xml": { "name": "Tipos" },
+      "type": "object"
+    },
+    "StatusAtendimento": {
+      "properties": {
+        "IdStatusAtendimento": { "type": "integer", "format": "int32" },
+        "ContatoIdContato": { "type": "integer", "format": "int32" },
+        "ConversaIdConversa": { "type": "integer", "format": "int32" },
+        "ListaIdLista": { "type": "integer", "format": "int32" },
+        "TipoFluxo": { "type": "integer", "format": "int32" },
+        "FluxoOrigem": { "type": "integer", "format": "int32" },
+        "IdFluxoDestinoEsperado": { "type": "integer", "format": "int32" },
+        "IdFluxoDestinoInesperado": { "type": "integer", "format": "int32" },
+        "IdFluxoDesistencia": { "type": "integer", "format": "int32" },
+        "IdFluxoOfensa": { "type": "integer", "format": "int32" },
+        "Resposta": { "type": "string" },
+        "RespostaEsperada": { "type": "string" },
+        "Finalizado": { "type": "boolean" },
+        "NomeCampanha": { "type": "string" },
+        "idCampanha": { "type": "integer", "format": "int32" },
+        "FluxoDestinoEsperado": { "$ref": "#/definitions/FluxoAtendimento" },
+        "FluxoDestinoInesperado": { "$ref": "#/definitions/FluxoAtendimento" },
+        "FluxoDesistencia": { "$ref": "#/definitions/FluxoAtendimento" },
+        "FluxoOfensa": { "$ref": "#/definitions/FluxoAtendimento" }
+      },
+      "xml": { "name": "StatusAtendimento" },
+      "type": "object"
+    },
+    "Sessao": {
+      "properties": {
+        "IdSession": { "type": "integer", "format": "int32" },
+        "Contato_Idcontato": { "type": "integer", "format": "int32" },
+        "Usuario_IdUsuario": { "type": "integer", "format": "int32" },
+        "DataCriacao": { "type": "string", "format": "date-time" },
+        "DataAtendimento": { "type": "string", "format": "date-time" },
+        "DataEncerramento": { "type": "string", "format": "date-time" },
+        "Conversa_IdConversa": { "type": "integer", "format": "int32" },
+        "Config_idconfig": { "type": "integer", "format": "int32" },
+        "QtdeNLido": { "type": "integer", "format": "int32" },
+        "Usuario": { "$ref": "#/definitions/Usuario" },
+        "Contato": { "$ref": "#/definitions/Contato" },
+        "Origem": { "type": "integer", "format": "int32" }
+      },
+      "xml": { "name": "Sessao" },
+      "type": "object"
+    },
+    "EmpresaCliente": {
+      "properties": {
+        "IdEmpresa": { "type": "integer", "format": "int32" },
+        "Nome": { "type": "string" },
+        "Logotipo": { "type": "string" },
+        "Instrucoes": { "type": "string" }
+      },
+      "xml": { "name": "EmpresaCliente" },
+      "type": "object"
+    },
+    "EnvioLista": {
+      "properties": {
+        "IdEnvio": { "type": "integer", "format": "int32" },
+        "CampanhaIdCampanha": { "type": "integer", "format": "int32" },
+        "DataCriacao": { "type": "string", "format": "date-time" },
+        "DataEnvio": { "type": "string", "format": "date-time" },
+        "UsuarioIdUsuario": { "type": "integer", "format": "int32" },
+        "DataTermino": { "type": "string", "format": "date-time" }
+      },
+      "xml": { "name": "EnvioLista" },
+      "type": "object"
+    },
+    "Equipe": {
+      "properties": {
+        "IdEquipe": { "type": "integer", "format": "int32" },
+        "NomeEquipe": { "type": "string" },
+        "Supervisor": { "type": "integer", "format": "int32" },
+        "TipoDistribuicao": { "type": "integer", "format": "int32" },
+        "Usuarios": {
+          "items": { "$ref": "#/definitions/Usuario" },
+          "xml": { "name": "Usuario", "wrapped": true },
+          "type": "array"
+        }
+      },
+      "xml": { "name": "Equipe" },
+      "type": "object"
+    },
+    "ListaChat": {
+      "properties": {
+        "IdContato": { "type": "integer", "format": "int32" },
+        "TipoChat": { "type": "integer", "format": "int32" },
+        "NomeInformado": { "type": "string" },
+        "Documento": { "type": "string" },
+        "Telefone": { "type": "string" },
+        "UserWhatsApp": { "type": "string" },
+        "NomeRetornado": { "type": "string" },
+        "QtdeNLido": { "type": "integer", "format": "int32" },
+        "ImageProfile": { "type": "string" },
+        "IdConfig": { "type": "integer", "format": "int32" },
+        "UltimaMsg": { "type": "integer", "format": "int32" },
+        "DataUltimaMsg": { "type": "string", "format": "date-time" },
+        "UltimoAcesso": { "type": "string", "format": "date-time" },
+        "status": { "type": "string" },
+        "Chip": { "type": "string" },
+        "TelefoneChip": { "type": "string" },
+        "Seguimento": { "type": "string" },
+        "NomeUsuario": { "type": "string" },
+        "StatusSessao": { "type": "string" }
+      },
+      "xml": { "name": "ListaChat" },
+      "type": "object"
+    },
+    "Pausas": {
+      "properties": {
+        "IdPausa": { "type": "integer", "format": "int32" },
+        "NomePausa": { "type": "string" },
+        "TempoLimite": { "type": "integer", "format": "int32" }
+      },
+      "xml": { "name": "Pausas" },
+      "type": "object"
+    },
+    "Relatorio": {
+      "properties": {
+        "IdRelatorio": { "type": "integer", "format": "int32" },
+        "Nome": { "type": "string" },
+        "Permissao": { "type": "integer", "format": "int32" },
+        "DataCriacao": { "type": "string", "format": "date-time" },
+        "Query": { "type": "string" },
+        "Toolbar": { "type": "boolean" },
+        "Desativado": { "type": "boolean" }
+      },
+      "xml": { "name": "Relatorio" },
+      "type": "object"
+    }
+  },
+  "tags": [
+    { "name": "Atendimento" },
+    { "name": "Auth" },
+    { "name": "BotWhare" },
+    { "name": "Campanha" },
+    { "name": "Config" },
+    { "name": "Contato" },
+    { "name": "Contatos" },
+    { "name": "Conversas" },
+    { "name": "DashBoard" },
+    { "name": "DocFile" },
+    { "name": "Equipe" },
+    { "name": "ListaChat" },
+    { "name": "Meta" },
+    { "name": "Pausas" },
+    { "name": "Relatorio" },
+    { "name": "Sessao" },
+    { "name": "TextoSugestao" },
+    { "name": "Usuario" },
+    { "name": "WebHook" }
+  ]
+}

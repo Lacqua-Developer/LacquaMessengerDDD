@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  websocket:
+    build:
+      context: .
+      dockerfile: Dockerfile-socket
+      args:
+        - NO_CACHE=${NO_CACHE}
+    container_name: lacqua_websocket
+    env_file:
+      - env/.env
+    ports:
+      - "3334:3334"
+      - "3335:3335"
+    networks:
+      - lacqua_network
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-api
+      args:
+        - NO_CACHE=${NO_CACHE}
+    container_name: lacqua_api
+    ports:
+      - "80:80"
+      - "443:443"
+      - "5000:5000"
+    environment:
+      REFRESH: 1
+    networks:
+      - lacqua_network
+    depends_on:
+      - websocket
+networks:
+  lacqua_network:
+    driver: bridge
