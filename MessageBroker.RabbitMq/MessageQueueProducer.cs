@@ -75,11 +75,39 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
     {
         try
         {
+            Channel.ConfirmSelect();
+
+            // Eventos do canal (opcional para logs adicionais)
+            Channel.CallbackException += (sender, args) =>
+            {
+
+                _logger.LogInformation($"CallbackException: {args.Exception.Message}");
+            };
+            Channel.FlowControl += (sender, args) =>
+            {
+                _logger.LogInformation("Controle de fluxo acionado.");
+            };
+
+
             _logger.LogInformation($"Tentando Enviar o Rabbit fila: {routingKey}");
             var json = JsonConvert.SerializeObject(message);
             var body = Encoding.UTF8.GetBytes(json);
-            
+
+            // Uso da função para garantir a estrutura
+            EnsureRabbitMQStructure(exchange, routingKey, routingKey);
+
             Channel.BasicPublish(exchange: exchange, routingKey: routingKey, body: body);
+
+            // Aguarda a confirmação
+            if (Channel.WaitForConfirms())
+            {
+                _logger.LogInformation("Mensagem foi confirmada pelo RabbitMQ.");
+
+            }
+            else
+            {
+                _logger.LogError("Erro ao confirmar o envio da mensagem.");
+            }
         }
         catch (Exception ex)
         {
@@ -88,6 +116,26 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
             //logger.LogInformation($"Falha ao enviar mensagem! => '{ex.Message}'");
         }
 
+    }
+
+    // Declaração da estrutura (Exchange, Queue e Binding)
+    private void EnsureRabbitMQStructure(string exchange, string queue, string routingKey)
+    {
+        
+        // Declara o Exchange (se ainda não existir)
+        Channel.ExchangeDeclare(exchange: exchange, type: "direct", durable: true, autoDelete: false);
+
+        // Declara a Fila (se ainda não existir)
+        Channel.QueueDeclare(queue: queue,
+                             durable: false,
+                             exclusive: false,
+                             autoDelete: true,
+                             arguments: null);
+
+        // Liga a Fila ao Exchange com a routingKey
+        Channel.QueueBind(queue: queue,
+                          exchange: exchange,
+                          routingKey: routingKey);
     }
 
     protected virtual void Dispose(bool disposing)
