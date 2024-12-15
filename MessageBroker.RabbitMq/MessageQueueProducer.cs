@@ -121,9 +121,10 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
     // Declaração da estrutura (Exchange, Queue e Binding)
     private void EnsureRabbitMQStructure(string exchange, string queue, string routingKey)
     {
-        
+
         // Declara o Exchange (se ainda não existir)
-        Channel.ExchangeDeclare(exchange: exchange, type: "direct", durable: true, autoDelete: false);
+        var typeExchange = exchange == "Espera" ? "fanout" : "direct";
+        Channel.ExchangeDeclare(exchange: exchange, type: typeExchange, durable: true, autoDelete: false);
 
         // Declara a Fila (se ainda não existir)
         Channel.QueueDeclare(queue: queue,
@@ -134,7 +135,22 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
 
         // Liga a Fila ao Exchange com a routingKey
         Channel.QueueBind(queue: queue,
-                          exchange: exchange,
+                          exchange: "Ativos",
+                          routingKey: routingKey);
+
+        // Liga a Fila ao Exchange com a routingKey
+        Channel.QueueBind(queue: queue,
+                          exchange: "Espera",
+                          routingKey: routingKey);
+
+        // Liga a Fila ao Exchange com a routingKey
+        Channel.QueueBind(queue: queue,
+                          exchange: "Conversas",
+                          routingKey: routingKey);
+
+        // Liga a Fila ao Exchange com a routingKey
+        Channel.QueueBind(queue: queue,
+                          exchange: "Contatos",
                           routingKey: routingKey);
     }
 
