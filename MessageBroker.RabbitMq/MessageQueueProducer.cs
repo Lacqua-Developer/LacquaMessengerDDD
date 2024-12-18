@@ -71,7 +71,7 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
 
         Channel.BasicPublish(exchange: "", routingKey: queue, body: body);
     }
-    public void PublishExchangeMessage<T>(string exchange, string routingKey, T message)
+    public bool PublishExchangeMessage<T>(string exchange, string routingKey, T message)
     {
         try
         {
@@ -102,17 +102,20 @@ public class MessageQueueProducer : IMessageQueueProducer, IDisposable
             if (Channel.WaitForConfirms())
             {
                 _logger.LogInformation("Mensagem foi confirmada pelo RabbitMQ.");
-
+                return true;
             }
             else
             {
                 _logger.LogError("Erro ao confirmar o envio da mensagem.");
+                return false;
             }
+
+
         }
         catch (Exception ex)
         {
             _logger.LogError($"Erro ao Enviar o Rabbit fila: {routingKey}, erro: {ex.Message}");
-
+            return false;
             //logger.LogInformation($"Falha ao enviar mensagem! => '{ex.Message}'");
         }
 

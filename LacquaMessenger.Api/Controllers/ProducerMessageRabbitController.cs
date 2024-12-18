@@ -37,9 +37,13 @@ namespace LacquaMessenger.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] MessageProducer value)
         {
-            _producer.PublishExchangeMessage(value.Exchange, value.RoutingKey, value.Message);
+            var success = _producer.PublishExchangeMessage(value.Exchange, value.RoutingKey, value.Message);
 
-            return await Task.FromResult(Ok());
+
+            if (success)
+                return Ok(new { message = "Message published successfully." });
+
+            return BadRequest(new { error = "Failed to publish message." });
 
         }
 
